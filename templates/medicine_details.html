@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+
+
+        <div class="panel panel-info col-sm-9 col-md-9 col-lg-8">
+                <div class="panel-heading text-center"><h3>{{medicine.medicine_name}} </h3></div>
+                    <div class="panel-body">
+
+
+                        <h4><p class="text-success">Medicine Name:  <small>{{medicine.medicine_name}}</small></h4>
+                        <hr>
+                        <h4><p class="text-success">Details:  <small>{{medicine.medicine_info|safe|linebreaks }}</small></h4>
+                        <hr>
+                        <h4><p class="text-success">Barcode:  <small>{{medicine.medicine_code}}</small></h4>
+                        <h4><p class="text-success">QR:  <small>{{medicine.medicine_qr}}</small></h4>
+                        <hr>
+                        <h4><p class="text-success">Price:  <small>{{medicine.medicine_price}} TL</small></h4>
+                    </div>
+
+        </div>
+       <div class="col-sm-9 col-md-6 col-lg-4" >
+
+                 {{medicine.medicine_image|safe|linebreaks }}
+            </div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-0">
+                <h1 style="color: white;" class="text-center">Create New Patient</h1>
+                <form method="POST" style="color: white;" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ form.media }}
+                    <input class="btn btn-primary" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+<div style="max-width: 1280px; max-height: 80%;">aaa</div>
+<script src="https://unpkg.com/scandit-sdk@5.x"></script>
+<script src="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x"></script>
+<script src="/node_modules/scandit-sdk/build/browser/index.min.js"></script>
+<script type="module" src="/node_modules/scandit-sdk/build/browser/index.esm.min.js"></script>
+
+{% endblock %}

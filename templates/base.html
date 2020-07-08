@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<title>PHARSYS</title>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/patients.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/baseStyle.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<header>
+
+
+	<aside class="sidebar-left-collapse">
+
+<a href="/home/" class="company-logo">
+
+			<img src="{% static '1.png' %}">
+		</a>
+		<div class="sidebar-links">
+
+			<div class="link-blue selected">
+
+				<a href="/home">
+					<i class="fa fa-home"></i>Home
+				</a>
+
+
+			</div>
+
+			<div class="link-red">
+
+				<a href="#">
+					<i class="fa fa-medkit"></i>My Medicines
+				</a>
+
+				<ul class="sub-links">
+					<li><a href="/cart">View Inventory</a></li>
+					<li><a href="/medicines/list/">Buy Medicine</a></li>
+				</ul>
+
+			</div>
+
+			    {% if user.user_type == "pharmacist" %}
+            			<div class="link-green">
+
+				<a href="#">
+					<i class="fa fa-vcard-o"></i>Patients
+				</a>
+
+				<ul class="sub-links">
+					<li><a href="/patients">Patient List</a></li>
+					<li><a href="/patients/create">Create Patient</a></li>
+				</ul>
+			</div>
+   {% endif %}
+
+
+          <div class="link-hi">
+
+
+				{% if user.is_authenticated %}
+  					<a href="{% url 'logout' %}">Hi {{ user.username }}! logout</a>
+
+			  {% else %}
+  					<p>You are not logged in</p>
+
+				{% endif %}
+
+          </div>
+
+
+
+		</div>
+
+	</aside>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+
+		$(function () {
+
+			var links = $('.sidebar-links > div');
+
+			links.on('click', function () {
+
+				links.removeClass('selected');
+				$(this).addClass('selected');
+
+			});
+		});
+
+	</script>
+
+</header>
+
+<div class="main-content">
+<body style="	 background-image: url('https://insidestory.org.au/wp-content/uploads/2017/07/348fac23-pharma.jpg'); background-color: #fff; background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;">
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</div>
+
+</html>

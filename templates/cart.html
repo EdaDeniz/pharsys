@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1 style="color: white;text-align: center;">  My Inventory </h1>
+<br>
+<br>
+
+
+<div class="col-sm-8 col-sm-offset-2">
+ <table class="table table-hover" style="background: #dae3f2;">
+     <thead class="thead-light" style="color: black; background: white;">
+     <th>Medicine</th>
+     <th>Price</th>
+     <th>Stock</th>
+     <th>Delete</th>
+
+     </thead>
+     {% for key, value in carts.items %}
+
+
+     <tr>
+
+        <td> {{key.medicine_name}}</td>
+        <td> {{key.medicine_price}}</td>
+        <td> {{value}} </td>
+        <td>
+            <form method="post" action="{% url 'cart:delete_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="medicine_id" value="{{key.id}}">
+                <input type="hidden" name="user_id" value="{{user.id}}">
+                <button class="btn btn-danger myButton" onclick="return confirm('Are you sure?')" > Delete  </button>
+
+            </form>
+        </td>
+     </tr>
+
+     {% endfor %}
+
+<tfoot>
+     <th>Medicine</th>
+     <th>Price</th>
+     <th>Stock</th>
+     <th>Delete</th>
+
+        </tfoot>
+ </table>
+
+    <a href="/medicines/list/" class="btn btn-success " role="button">Go to medicine list</a>
+</div>
+
+<script>
+   function deleteMess() {
+      alert("Are you sure?");
+    }
+</script>
+{% endblock %}
+

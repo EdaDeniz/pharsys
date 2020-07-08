@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up! | PHARSYS</title>
+</head>
+<body>
+  <input type="radio" id="toggle--signup" name="toggle" class="ghost" />
+
+
+
+  <form class="form form--signup framed" method="post">
+      {% csrf_token %}
+
+      <h1 class=" text--centered" style="        letter-spacing = 10px; ">PHARSYS</h1>
+      <h2 class="text text--centered text--omega">Join Us!</h2>
+
+    <input type="text" placeholder="Username" name="username" maxlength="150" autofocus required id="id_username" class="input input--top">
+    <input type="text" placeholder="First name" name="first_name" maxlength="30" id="id_first_name" class="input">
+    <input type="text" placeholder="Last name" name="last_name" maxlength="30" id="id_last_name" class="input">
+    <input type="email" placeholder="Email" class="input" name="email" maxlength="254" id="id_email"/>
+    <input type="password" placeholder="Password" class="input" name="password1" required id="id_password1">
+    <input type="password" placeholder="Confirm password" class="input" name="password2" required id="id_password2">
+
+        <select class="input" name="user_type" required id="id_user_type">
+            <option value="" selected>User Type</option>
+            <option value="pharmacist">Pharmacist</option>
+            <option value="manager">Medical Repository Manager</option>
+        </select>
+      <button type="submit" class="input input--submit">Sign Up!</button>
+
+    <a class="text text--small text--centered" href="/users/login">I am already a member</a>
+{% for field in form %}
+    <p>
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+    </p>
+  {% endfor %}
+  </form>
+  <div class="fullscreen-bg"></div>
+
+</body>
+</html>

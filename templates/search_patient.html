@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Search -->
+            <form role="search" method="GET" action="">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" placeholder="Search on patients" value="{{ request.GET.q }}" >
+                    <span class="input-group-btn">
+                        <input class="btn btn-success" type="submit" value="Ara">
+                    </span>
+                </div>
+            </form>
+<br>
+
+
+
+
+{% endblock %}

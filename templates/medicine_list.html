@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="header">{{header}}</div>
+
+
+<br>
+<form method='POST' action=''>
+    <input type="hidden"  value="Xa8yLx3nI80JbYCfqrUua7RyI2UBQP5Cyg7jIa3OCj6YXnXmUNgmxwJy2Y89x84z">
+{% csrf_token %}
+
+<div style="color: white;" id="div_id_medicine_code" class="form-group"> <label for="id_medicine_code" >
+                 </label> <div class=""> <input type="text" name="medicine_code" maxlength="100" placeholder="Enter Medicine Barcode" class="textinput textInput form-control"  id="id_medicine_code "> </div> </div> <div id="div_id_medicine_name" class="form-group"> <label for="id_medicine_name" class=" requiredField">
+                </label> <div class=""> <input type="text" placeholder="Enter Medicine name" name="medicine_name" maxlength="100" class="textinput textInput form-control"  id="id_medicine_name"> </div> </div> <div id="div_id_medicine_qr" class="form-group"> <label for="id_medicine_qr" class=" requiredField">
+                </label> <div class=""> <input type="text" name="medicine_qr" placeholder="Enter Medicine QR" maxlength="100" class="textinput textInput form-control"  id="id_medicine_qr"> </div> </div>
+
+
+        <input type="submit" value='Search' class="btn btn-info"/>
+</form>
+<br>
+
+ <div class='table display_table '>
+    <table style="background: white;" class='table '>
+        <thead>
+          <tr>
+
+            <th>Name</th>
+            <th>Info</th>
+            <th>Barcode</th>
+            <th>Qr code</th>
+            <th>Price</th>
+             <th>Details </th>
+            <th> Add </th>
+
+          </tr>
+        </thead>
+      {% for medicine in medicines %}
+
+            <td>{{ medicine.medicine_name }}</td>
+            <td>{{ medicine.medicine_info|safe|linebreaks }}</td>
+            <td>{{ medicine.medicine_code }}</td>
+            <td>{{ medicine.medicine_qr }}</td>
+            <td>{{ medicine.medicine_price }}</td>
+
+        <td><a href="/medicines/{{medicine.id}}"><button  class="btn">
+            <i class="glyphicon glyphicon-book"></i></button></a>
+        </td>
+
+
+        <td> <a href="/cart/{{medicine.id}}" class="btn btn-sq-xs btn-success">
+              <i class="fa fa-plus fa-1x"></i><br/>
+            </a> </td>
+
+
+      </tr>
+
+
+      {% endfor %}
+    </table>
+
+    </div>
+
+
+<br>
+<style>
+
+.table{
+	font-size: 13px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+	text-align: center;
+}
+
+/*Make alternating colors for the table rows*/
+.table tr:nth-child(odd){
+	background: #e6e6ff;
+}
+
+.table tr:nth-child(even){
+	background:  #9999ff
+;
+}
+
+th {
+  background-color: #8B008B;
+  color: white;
+}
+
+.header {
+    font-family: helvetica;
+    color: #ffa;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    text-shadow: 6px 6px 6px purple;
+    display: block;
+    font-weight: bolder;
+}
+</style>
+
+
+
+
+{% endblock %}

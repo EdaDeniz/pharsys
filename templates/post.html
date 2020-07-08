@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% load static %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<body>
+
+<div>
+    <h1 style="text-align: center; background-color: #fff;">Announcements</h1>
+
+            {% for post in posts %}
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading text-center">
+                        <a style="color: black">
+                            <h3>{{posts.title}}</h3>
+                        </a>
+                    </div>
+                        <div class="panel-body">
+
+                            <h4><p class="text-success">Title: <small>{{post.title}}</small></h4>
+                            <h4><p class="text-success"> <small>{{post.text|safe|linebreaks }}</small></h4>
+                            <h5><p class="text-warning">Created Date: {{post.created_date}}</h5>
+						</div>
+				</div>
+        	{% endfor %}
+</div>
+    <ul>
+     <div class="row" >
+                <div class="col-md-6 col-md-offset-3">
+                    <ul class="pagination">
+                    <div class="pagination">
+                        <span class="step-links pagination">
+                       			 {% if posts.has_previous %}
+                                <li>
+									<a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a>
+								</li>
+								{% endif %}
+
+  	                       <li >
+							 <span class="current">
+                                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+							 </span>
+						   </li>
+
+							<li>{% if posts.has_next %}
+                                <a  href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a>
+                            {% endif %}
+                            </li>
+                        </span>
+                    </div>
+					</ul>
+                </div>
+	 </div>
+    </ul>
+
+</body>
+</html>

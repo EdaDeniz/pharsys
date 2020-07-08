@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: e.deniz.celik@gmail.com
+Date: Sat, 14 Mar 2020 21:27:10 -0000
+Message-ID: <158422123057.15908.2606773233689332925@DESKTOP-MV0LOST.home>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/users/reset/MQ/5et-b08be722b92fccb3451f/
+
+Your username, in case you’ve forgotten: eda
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
